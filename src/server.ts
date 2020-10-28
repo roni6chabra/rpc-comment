@@ -4,6 +4,8 @@ import { hot } from 'bootstrap-hot-loader';
 import wixExpressCsrf from '@wix/wix-express-csrf';
 import wixExpressRequireHttps from '@wix/wix-express-require-https';
 import * as WixNodeI18nCache from 'wix-node-i18n-cache';
+import { NodeWorkshopScalaApp } from '@wix/ambassador-node-workshop-scala-app/rpc';
+import bodyParser from 'body-parser';
 
 // caches translation files and serves them per request
 // https://github.com/wix-private/wix-node-i18n-cache
@@ -31,6 +33,21 @@ export default hot(module, (app: Router, context) => {
   // Attach a rendering middleware, it adds the `renderView` method to every request.
   // See https://github.com/wix-private/fed-infra/tree/master/wix-bootstrap-renderer.
   app.use(context.renderer.middleware());
+
+
+  const commentsService = NodeWorkshopScalaApp().CommentsService();
+
+  app.get('/comments/:siteId', async (req, res) => {
+    const comments = await commentsService(req.aspects).fetch(req.params.siteId);
+    res.send(comments);
+  });
+
+  app.post('/comment/:siteId', bodyParser.json() , async (req, res) => {
+    const comment = await commentsService(req.aspects).add(req.params.siteId,req.body);
+    console.log('comment', comment);
+    res.end();
+  });
+
 
   // Define a route to render our initial HTML.
   app.get('/', (req, res) => {

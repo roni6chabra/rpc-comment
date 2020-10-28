@@ -23,6 +23,8 @@
     "*.{js,ts,tsx,scss,less}": "yoshi lint"
   },
   "dependencies": {
+    "@wix/ambassador": "^4.0.444",
+    "@wix/ambassador-node-workshop-scala-app": "^1.0.7",
     "@wix/wix-axios-config": "latest",
     "@wix/wix-bootstrap-greynode": "latest",
     "@wix/wix-bootstrap-hadron": "latest",
@@ -32,6 +34,7 @@
     "@wix/wix-express-require-https": "latest",
     "@wix/wix-i18n-config": "^5.0.0",
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
     "bootstrap-hot-loader": "^4.1.0",
     "express": "^4.17.1",
     "react": "16.12.0",
@@ -46,6 +49,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
+    "@wix/ambassador-testkit": "^5.0.305",
     "@wix/fedops-logger": "^5.0.0",
     "@wix/wix-bootstrap-testkit": "latest",
     "@wix/wix-config-emitter": "latest",
