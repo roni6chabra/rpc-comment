@@ -1,0 +1,11 @@
+{
+    "appName": "rpc-comments",
+    "notifications": {
+      "slack_channels": [
+        "fedops-urgent-default"
+      ]
+    },
+    "deploy_annotations": [
+      "rpc-comments"
+    ]
+  }
